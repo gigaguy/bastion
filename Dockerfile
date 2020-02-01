@@ -1,18 +1,13 @@
 FROM ubuntu:18.04
-MAINTAINER Gig3
+WORKDIR /tmp
+RUN apt update && apt install --no-install-recommends -y build-essential
+COPY uname_wrapper.c /tmp/
 
-# Configure user nobody to match unRAID's settings
-RUN \
-usermod -u 99 nobody && \
-usermod -g 100 nobody && \
-usermod -d /home nobody && \
-chown -R nobody:users /home
+# Docker image version is provided via build arg.
+ARG DOCKER_IMAGE_VERSION=unknown
 
-RUN apt-get update && \
-    apt-get install -y git && \
-    apt-get clean
+# Define software versions.
+ARG VERSION=1.0.0
 
-# Volumes
-VOLUME ["/config"]
-
-EXPOSE  22
+# Define working directory.
+WORKDIR /tmp
