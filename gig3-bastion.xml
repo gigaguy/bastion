@@ -17,7 +17,7 @@
   <Registry>https://hub.docker.com/repository/docker/gigaguy/gig3-bastion/</Registry>
   <GitHub>https://github.com/gigaguy/bastion</GitHub>
   <Repository>gigaguy/bastion</Repository>
-  <Project>http://nzbget.net/</Project>
+  <Project>http://gig3.net/</Project>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
     <Networking>
