@@ -9,6 +9,8 @@ RUN mkdir /var/run/sshd
 
 RUN echo 'root:root' |chpasswd
 
+COPY bastion /usr/sbin/bastion
+
 RUN mkdir -p /var/run/sshd \
   && mkdir /root/.ssh \
   && chmod 700 /root/.ssh \
