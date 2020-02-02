@@ -24,7 +24,7 @@
     <Mode>bridge</Mode>
     <Publish>
       <Port>
-        <HostPort>23</HostPort>
+        <HostPort>2222</HostPort>
         <ContainerPort>22</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
@@ -46,13 +46,13 @@
   </Environment>
   <Data>
     <Volume>
-      <HostDir>/mnt/cache/appdata/config</HostDir>
-      <ContainerDir>/config</ContainerDir>
-      <Mode>rw</Mode>
+      <HostDir>$PWD/authorized_keys</HostDir>
+      <ContainerDir>/var/lib/bastion/authorized_keys</ContainerDir>
+      <Mode>ro</Mode>
     </Volume>
     <Volume>
-      <HostDir>/mnt/user/appdata/data</HostDir>
-      <ContainerDir>/data</ContainerDir>
+      <HostDir>docker-ssh</HostDir>
+      <ContainerDir>/usr/etc/ssh</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>

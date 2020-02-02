@@ -1,13 +1,19 @@
 FROM ubuntu:18.04
-MAINTAINER Gig3
 
-ARG ROOTPW 
-ENV ROOTPW=$ROOTPW
+MAINTAINER Gig3
+LABEL maintainer=Gig3
 
 RUN apt-get update && apt-get install -y openssh-server vim
-RUN mkdir /var/run/sshd
 
-RUN echo 'root:root' |chpasswd
+ARG HOME=/var/lib/bastion
+
+ARG USER=bastion
+ARG GROUP=bastion
+ARG UID=4096
+ARG GID=4096
+
+ENV HOST_KEYS_PATH_PREFIX="/usr"
+ENV HOST_KEYS_PATH="${HOST_KEYS_PATH_PREFIX}/etc/ssh"
 
 COPY bastion /usr/sbin/bastion
 
@@ -16,10 +22,8 @@ RUN mkdir -p /var/run/sshd \
   && chmod 700 /root/.ssh \
   && touch /root/.ssh/authorized_keys
 
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+EXPOSE 22/tcp
 
-COPY sshd_config /etc/ssh/sshd_config
+VOLUME ${HOST_KEYS_PATH}
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["bastion"]
