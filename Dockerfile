@@ -3,7 +3,7 @@ FROM alpine:latest
 MAINTAINER Gig3 
 
 # Install required packages
-RUN apk add --no-cache openssh mysql-client bash wget curl vim shadow coreutils screen
+RUN apk add --no-cache openssh mysql-client bash wget curl vim shadow coreutils screen gawk
 
 # Configure the SSH server
 RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/sshd_config && \
