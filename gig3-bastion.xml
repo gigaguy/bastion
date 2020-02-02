@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Containers>
-  <TemplateURL>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/nzbget.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/gigaguy/bastion/master/gig3-bastion.xml</TemplateURL>
   <Beta>False</Beta>
   <Category>Downloaders:</Category>
   <Name>gig3-bastion</Name>
