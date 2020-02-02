@@ -1,12 +1,13 @@
 FROM ubuntu:18.04
 MAINTAINER Gig3
 
+ARG ROOTPW 
+ENV ROOTPW=$ROOTPW
+
 RUN apt-get update && apt-get install -y openssh-server vim
 RUN mkdir /var/run/sshd
 
 RUN echo 'root:root' |chpasswd
-
-COPY bastion /usr/sbin/bastion
 
 RUN mkdir -p /var/run/sshd \
   && mkdir /root/.ssh \
