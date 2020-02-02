@@ -1,29 +1,34 @@
-FROM ubuntu:18.04
+FROM alpine:latest
 
-MAINTAINER Gig3
-LABEL maintainer=Gig3
+MAINTAINER Gig3 
 
-RUN apt-get update && apt-get install -y openssh-server vim
+# Install required packages
+RUN apk add --no-cache openssh mysql-client bash wget curl vim shadow
 
-ARG HOME=/var/lib/bastion
+# Configure the SSH server
+RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/sshd_config && \
+    sed -i 's/\#PasswordAuthentication\ yes/PasswordAuthentication\ yes/' /etc/ssh/sshd_config && \
+    sed -i 's/\#PermitEmptyPasswords\ no/PermitEmptyPasswords\ no/' /etc/ssh/sshd_config && \
+    sed -i 's/\#X11Forwarding\ no/X11Forwarding\ yes/' /etc/ssh/sshd_config && \
+    sed -i 's/\#AllowTcpForwarding\ yes/AllowTcpForwarding\ yes/' /etc/ssh/sshd_config && \
+    sed -i 's/\#AllowAgentForwarding\ yes/AllowAgentForwarding\ yes/' /etc/ssh/sshd_config && \
+    sed -i 's/\#UseDNS\ no/UseDNS\ no/' /etc/ssh/sshd_config && \
+    ssh-keygen -A
 
-ARG USER=bastion
-ARG GROUP=bastion
-ARG UID=4096
-ARG GID=4096
+# Add a "bastion" user with a default password of "bastion"
+RUN adduser -s /bin/bash -S bastion && \
+    echo "bastion:bastion" | chpasswd && \
+    mkdir -p /home/bastion/.ssh
 
-ENV HOST_KEYS_PATH_PREFIX="/usr"
-ENV HOST_KEYS_PATH="${HOST_KEYS_PATH_PREFIX}/etc/ssh"
+# Set a motd
+ADD etc/motd.txt /etc/motd
 
-COPY bastion /usr/sbin/bastion
+# Expose SSH
+EXPOSE 22
 
-RUN mkdir -p /var/run/sshd \
-  && mkdir /root/.ssh \
-  && chmod 700 /root/.ssh \
-  && touch /root/.ssh/authorized_keys
+# Define our entrypoint
+ADD bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["bash", "/usr/local/bin/docker-entrypoint.sh"]
 
-EXPOSE 22/tcp
-
-VOLUME ${HOST_KEYS_PATH}
-
-ENTRYPOINT ["bastion"]
+# Start the server
+CMD ["/usr/sbin/sshd", "-D", "-e"]
