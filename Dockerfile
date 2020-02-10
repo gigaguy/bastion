@@ -3,7 +3,10 @@ FROM alpine:latest
 MAINTAINER Gig3 
 
 # Install required packages
-RUN apk add --no-cache openssh mysql-client bash wget curl vim shadow coreutils screen gawk git fail2ban 
+RUN apk add --no-cache openssh mysql-client bash \
+	 wget curl vim shadow coreutils screen \
+	 gawk git fail2ban lastpass-cli
+
 
 # Configure the SSH server
 RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/sshd_config && \
