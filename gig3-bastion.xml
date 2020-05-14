@@ -2,7 +2,7 @@
 <Containers>
   <TemplateURL>https://raw.githubusercontent.com/gigaguy/bastion/master/gig3-bastion.xml</TemplateURL>
   <Beta>False</Beta>
-  <Category>Downloaders:</Category>
+  <Category>Management:</Category>
   <Name>gig3-bastion</Name>
   <Description>
     [b][u][span style='color: #E80000;']Description[/span][/u][/b][br]
@@ -13,11 +13,11 @@
   <Overview>
     Gig3-Bastion
   </Overview>
-  <Support>http://lime-technology.com/forum/index.php?topic=45843.0</Support>
+  <Support>0</Support>
   <Registry>https://hub.docker.com/repository/docker/gigaguy/gig3-bastion/</Registry>
   <GitHub>https://github.com/gigaguy/bastion</GitHub>
   <Repository>gigaguy/bastion</Repository>
-  <Project>http://gig3.net/</Project>
+  <Project>SSH Bastion Host</Project>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
     <Networking>
