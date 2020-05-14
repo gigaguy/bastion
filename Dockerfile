@@ -18,6 +18,7 @@ RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/s
     sed -i 's/\#AllowTcpForwarding\ yes/AllowTcpForwarding\ yes/' /etc/ssh/sshd_config && \
     sed -i 's/\#AllowAgentForwarding\ yes/AllowAgentForwarding\ yes/' /etc/ssh/sshd_config && \
     sed -i 's/\#UseDNS\ no/UseDNS\ no/' /etc/ssh/sshd_config && \
+    sed -i 's/\#LogLevel\ INFO/LogLevel\ VERBOSE /' /etc/ssh/sshd_config && \
     ssh-keygen -A
 
 # Add a "bastion" user with a default password of "bastion"
