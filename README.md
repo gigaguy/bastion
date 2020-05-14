@@ -1,5 +1,5 @@
 # SSH Bastion Host
-SSH Host with the following  installed
+SSH Host with the following installed.  Default user is 'bastion'
 * mysql-client
 * bash 
 * wget 
