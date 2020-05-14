@@ -2,6 +2,8 @@ FROM alpine:latest
 
 MAINTAINER Gig3 
 
+ENV AUTHORIZED_KEYS=
+
 # Install required packages
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
@@ -32,6 +34,8 @@ EXPOSE 22
 # Define our entrypoint
 ADD bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["bash", "/usr/local/bin/docker-entrypoint.sh"]
+
+
 
 # Start the server
 CMD ["/usr/sbin/sshd", "-D", "-e"]
