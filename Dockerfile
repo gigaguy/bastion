@@ -5,7 +5,7 @@ MAINTAINER Gig3
 # Install required packages
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
-	 gawk git fail2ban lastpass-cli
+	 gawk git fail2ban tmux lastpass-cli
 
 
 # Configure the SSH server
