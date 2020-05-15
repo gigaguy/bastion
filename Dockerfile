@@ -22,7 +22,7 @@ RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/s
     ssh-keygen -A
 
 # Add a "bastion" user with a default password of "bastion"
-RUN adduser -s /bin/bash -S bastion --uid 1024 -G users,tty && \
+RUN adduser -s /bin/bash -S bastion --uid 1024 -G users && \
     echo "bastion:bastion" | chpasswd && \
     mkdir -p /home/bastion/.ssh
 
