@@ -22,9 +22,12 @@ RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/s
     ssh-keygen -A
 
 # Add a "bastion" user with a default password of "bastion"
-RUN adduser -s /bin/bash -S bastion --uid 1024 --ingroup users && \
+RUN adduser -s /bin/bash -S bastion --uid 1024 -G users,tty && \
     echo "bastion:bastion" | chpasswd && \
     mkdir -p /home/bastion/.ssh
+
+# Possible fix to alow SSH logs to stdout
+RUN chmod o+w /dev/stdout
 
 # Set a motd
 ADD etc/motd.txt /etc/motd
