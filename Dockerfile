@@ -7,7 +7,7 @@ ENV AUTHORIZED_KEYS=
 # Install required packages
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
-	 gawk git fail2ban tmux lastpass-cli
+	 gawk git fail2ban tmux lastpass-cli less more
 
 
 # Configure the SSH server
