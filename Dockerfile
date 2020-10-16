@@ -7,9 +7,10 @@ ENV AUTHORIZED_KEYS=
 # Install required packages
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
-	 gawk git fail2ban tmux lastpass-cli less more \
-	 sqlite 
+	 gawk git fail2ban tmux lastpass-cli less sqlite 
 
+RUN apk --update upgrade && \
+    rm -rf /var/cache/apk/*
 
 # Configure the SSH server
 RUN sed -i 's/\#PubkeyAuthentication\ yes/PubkeyAuthentication\ yes/' /etc/ssh/sshd_config && \
