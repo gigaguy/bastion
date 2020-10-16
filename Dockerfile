@@ -8,7 +8,7 @@ ENV AUTHORIZED_KEYS=
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
 	 gawk git fail2ban tmux lastpass-cli less more \
-	 sqlite*
+	 sqlite sqlite-dev
 
 
 # Configure the SSH server
