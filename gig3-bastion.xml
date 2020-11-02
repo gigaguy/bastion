@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Container version="1">
+<Container version="1.1>
   <TemplateURL>https://raw.githubusercontent.com/gigaguy/bastion/master/gig3-bastion.xml</TemplateURL>
   <Beta>False</Beta>
   <Category>Management:</Category>
