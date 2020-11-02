@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Containers>
+<Container version="1">
   <TemplateURL>https://raw.githubusercontent.com/gigaguy/bastion/master/gig3-bastion.xml</TemplateURL>
   <Beta>False</Beta>
   <Category>Management:</Category>
@@ -62,4 +62,4 @@
   <DonateLink>https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=MM5E27UX6AUU4</DonateLink>
   <DonateImg>https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif</DonateImg>
   <ExtraParams></ExtraParams>
-</Containers>
+</Container>
