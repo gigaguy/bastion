@@ -7,7 +7,8 @@ ENV AUTHORIZED_KEYS=
 # Install required packages
 RUN apk add --no-cache openssh mysql-client bash \
 	 wget curl vim shadow coreutils screen \
-	 gawk git fail2ban tmux lastpass-cli less sqlite 
+	 gawk git fail2ban tmux less sqlite \ 
+	 ansible 
 
 RUN apk --update upgrade && \
     rm -rf /var/cache/apk/*
